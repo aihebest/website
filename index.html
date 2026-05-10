@@ -69,7 +69,7 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-    .nav-logo img { height: 32px; width: auto; }
+    .nav-logo img { height: 48px; width: auto; }
     .nav-logo-text { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
     .nav-logo-text span { color: var(--teal); }
     .nav-links { display: flex; gap: 4px; margin-left: 36px; list-style: none; }
@@ -80,6 +80,62 @@
     }
     .nav-links a:hover { color: var(--white); background: var(--border); }
     .nav-ctas { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+    .btn-linkedin {
+      background: #0A66C2; color: #fff;
+      box-shadow: 0 4px 16px rgba(10,102,194,0.25);
+    }
+    .btn-linkedin:hover { background: #0856a5; transform: translateY(-2px); }
+
+    /* CERTIFICATIONS */
+    .certs-section { background: var(--navy); }
+    .certs-grid {
+      max-width: 1100px; margin: 52px auto 0;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    }
+    .cert-card {
+      background: var(--navy-2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px 18px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cert-card:hover { border-color: var(--teal-glow); transform: translateY(-3px); }
+    .cert-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0; font-weight: 700;
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      letter-spacing: -0.02em;
+    }
+    .cert-icon-ca   { background: rgba(0,140,255,0.15); color: #3b9eff; border: 1px solid rgba(0,140,255,0.25); }
+    .cert-icon-gh   { background: rgba(255,255,255,0.07); color: #e6edf3; border: 1px solid rgba(255,255,255,0.14); }
+    .cert-icon-hcl  { background: rgba(96,64,182,0.2); color: #a78bfa; border: 1px solid rgba(96,64,182,0.3); }
+    .cert-icon-aws  { background: rgba(255,153,0,0.15); color: #ff9900; border: 1px solid rgba(255,153,0,0.25); }
+    .cert-icon-pen  { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+    .cert-icon-ceh  { background: rgba(239,68,68,0.12); color: #fb923c; border: 1px solid rgba(239,68,68,0.2); }
+    .cert-icon-csa  { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+    .cert-icon-ccnp { background: rgba(0,130,220,0.15); color: #60b4ff; border: 1px solid rgba(0,130,220,0.25); }
+    .cert-info { min-width: 0; }
+    .cert-name { font-size: 13px; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 4px; }
+    .cert-issuer { font-size: 12px; color: var(--slate); margin-bottom: 5px; }
+    .cert-validity {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-family: 'Space Mono', monospace;
+      color: var(--teal); background: var(--teal-soft);
+      border: 1px solid var(--teal-glow); border-radius: 100px;
+      padding: 2px 8px;
+    }
+    .cert-validity.expired { color: var(--slate); background: rgba(255,255,255,0.03); border-color: var(--border); }
+
+    /* DEVSECOPS PIPELINE DIAGRAM */
+    .pipeline-diagram {
+      background: #0a1828; border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px; margin-top: 16px;
+      overflow-x: auto;
+    }
+    .pipeline-diagram svg { width: 100%; min-width: 480px; height: auto; display: block; }
+
+    @media (max-width: 1024px) { .certs-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px)  { .certs-grid { grid-template-columns: 1fr; } }
 
     /* BUTTONS */
     .btn {
@@ -392,10 +448,12 @@
       <li><a href="#about">About</a></li>
       <li><a href="#stack">Stack</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-ctas">
+      <a href="https://www.linkedin.com/in/stephen-aihebholoria-devsecops-pent-ceh-cysa-isc2-b220b157/" target="_blank" class="btn btn-linkedin">LinkedIn</a>
       <a href="#contact" class="btn btn-teal">Hire Me →</a>
     </div>
   </nav>
@@ -772,6 +830,164 @@
         </div>
       </div>
 
+
+      <!-- DevSecOps Pipeline Project -->
+      <div class="project-card" style="grid-column: 1 / -1;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+          <div class="project-mockup" style="height:280px;border-bottom:none;border-right:1px solid rgba(255,255,255,0.07);">
+            <svg viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;padding:24px;">
+              <defs>
+                <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="#00C9A7" opacity="0.7"/>
+                </marker>
+                <filter id="glow2"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+              <rect x="10" y="110" width="72" height="36" rx="8" fill="#172d48" stroke="#00C9A7" stroke-width="1.2"/>
+              <text x="46" y="124" font-family="Space Mono,monospace" font-size="8" fill="#00C9A7" text-anchor="middle" font-weight="700">GitHub</text>
+              <text x="46" y="136" font-family="Inter,sans-serif" font-size="7" fill="#7A8FA6" text-anchor="middle">Source Repo</text>
+              <line x1="82" y1="128" x2="108" y2="128" stroke="#00C9A7" stroke-width="1.2" marker-end="url(#arrow)" opacity="0.7"/>
+              <polygon points="140,108 172,128 140,148 108,128" fill="#112237" stroke="#00C9A7" stroke-width="1.5" filter="url(#glow2)"/>
+              <text x="140" y="125" font-family="Space Mono,monospace" font-size="6.5" fill="#00C9A7" text-anchor="middle" font-weight="700">CI/CD</text>
+              <text x="140" y="135" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">GH Actions</text>
+              <line x1="172" y1="118" x2="210" y2="68" stroke="#00C9A7" stroke-width="1" marker-end="url(#arrow)" opacity="0.6" stroke-dasharray="3 2"/>
+              <line x1="172" y1="128" x2="210" y2="128" stroke="#00C9A7" stroke-width="1" marker-end="url(#arrow)" opacity="0.6" stroke-dasharray="3 2"/>
+              <line x1="172" y1="138" x2="210" y2="188" stroke="#00C9A7" stroke-width="1" marker-end="url(#arrow)" opacity="0.6" stroke-dasharray="3 2"/>
+              <rect x="210" y="50" width="70" height="32" rx="7" fill="#112237" stroke="rgba(0,201,167,0.35)" stroke-width="1"/>
+              <text x="245" y="63" font-family="Space Mono,monospace" font-size="7.5" fill="#00C9A7" text-anchor="middle" font-weight="700">SAST</text>
+              <text x="245" y="75" font-family="Inter,sans-serif" font-size="6.5" fill="#7A8FA6" text-anchor="middle">CodeQL</text>
+              <rect x="210" y="112" width="70" height="32" rx="7" fill="#112237" stroke="rgba(0,201,167,0.35)" stroke-width="1"/>
+              <text x="245" y="125" font-family="Space Mono,monospace" font-size="7.5" fill="#00C9A7" text-anchor="middle" font-weight="700">SCA</text>
+              <text x="245" y="137" font-family="Inter,sans-serif" font-size="6.5" fill="#7A8FA6" text-anchor="middle">Trivy</text>
+              <rect x="210" y="172" width="70" height="32" rx="7" fill="#112237" stroke="rgba(0,201,167,0.35)" stroke-width="1"/>
+              <text x="245" y="185" font-family="Space Mono,monospace" font-size="7.5" fill="#00C9A7" text-anchor="middle" font-weight="700">IaC Scan</text>
+              <text x="245" y="197" font-family="Inter,sans-serif" font-size="6.5" fill="#7A8FA6" text-anchor="middle">Terraform+Trivy</text>
+              <rect x="296" y="50" width="72" height="32" rx="7" fill="#0f2035" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+              <text x="332" y="63" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">Static Code</text>
+              <text x="332" y="74" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">Analysis</text>
+              <rect x="296" y="112" width="72" height="32" rx="7" fill="#0f2035" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+              <text x="332" y="125" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">Dependency</text>
+              <text x="332" y="136" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">Check</text>
+              <rect x="296" y="172" width="72" height="32" rx="7" fill="#0f2035" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+              <text x="332" y="185" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">Infrastructure</text>
+              <text x="332" y="196" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">Check</text>
+              <line x1="280" y1="66" x2="295" y2="66" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arrow)"/>
+              <line x1="280" y1="128" x2="295" y2="128" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arrow)"/>
+              <line x1="280" y1="188" x2="295" y2="188" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arrow)"/>
+              <line x1="368" y1="66" x2="398" y2="118" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arrow)"/>
+              <line x1="368" y1="128" x2="398" y2="128" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arrow)"/>
+              <line x1="368" y1="188" x2="398" y2="138" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arrow)"/>
+              <rect x="398" y="108" width="72" height="40" rx="8" fill="#172d48" stroke="#00C9A7" stroke-width="1.5" filter="url(#glow2)"/>
+              <text x="434" y="122" font-family="Space Mono,monospace" font-size="7" fill="#00C9A7" text-anchor="middle" font-weight="700">Remediation</text>
+              <text x="434" y="133" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">&amp; Auto-fix</text>
+              <line x1="434" y1="148" x2="434" y2="170" stroke="#00C9A7" stroke-width="1.2" marker-end="url(#arrow)" opacity="0.7"/>
+              <rect x="398" y="170" width="72" height="32" rx="7" fill="#112237" stroke="rgba(0,201,167,0.35)" stroke-width="1"/>
+              <text x="434" y="183" font-family="Space Mono,monospace" font-size="7" fill="#00C9A7" text-anchor="middle" font-weight="700">Reporting</text>
+              <text x="434" y="194" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">&amp; Alerts</text>
+              <rect x="10" y="20" width="52" height="20" rx="5" fill="rgba(255,153,0,0.15)" stroke="rgba(255,153,0,0.3)" stroke-width="1"/>
+              <text x="36" y="33" font-family="Space Mono,monospace" font-size="7" fill="#ff9900" text-anchor="middle" font-weight="700">AWS</text>
+              <rect x="70" y="20" width="58" height="20" rx="5" fill="rgba(0,201,167,0.1)" stroke="rgba(0,201,167,0.25)" stroke-width="1"/>
+              <text x="99" y="33" font-family="Space Mono,monospace" font-size="7" fill="#00C9A7" text-anchor="middle" font-weight="700">Terraform</text>
+            </svg>
+          </div>
+          <div class="project-body" style="padding:32px;">
+            <div class="project-tags">
+              <span class="tag">DevSecOps</span>
+              <span class="tag">SAST</span>
+              <span class="tag">SCA</span>
+              <span class="tag-grey tag">IaC Scanning</span>
+              <span class="tag-grey tag">GitHub Actions</span>
+              <span class="tag-grey tag">AWS</span>
+              <span class="tag-grey tag">Terraform</span>
+            </div>
+            <div class="project-title">DevSecOps Pipeline — SAST, SCA &amp; IaC Security</div>
+            <div class="project-desc">A comprehensive DevSecOps implementation integrating <strong style="color:var(--slate-light)">SAST</strong> (CodeQL), <strong style="color:var(--slate-light)">Software Composition Analysis</strong> (Trivy), and <strong style="color:var(--slate-light)">IaC scanning</strong> (Terraform Compliance + Trivy) — automated through GitHub Actions. Enforces PR blocking on Critical/High vulnerabilities, implements a full Secure SDLC, and deploys to AWS with encrypted Terraform remote state on S3.</div>
+            <div class="project-meta" style="margin-bottom:16px;">
+              <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>DevSecOps Architect</div>
+              <div class="project-meta-item"><span class="meta-label">Stack:&nbsp;</span>GitHub Actions · CodeQL · Trivy · Terraform · AWS S3</div>
+            </div>
+            <a href="https://github.com/aihebest/DevSecOps-Project--April" target="_blank" class="btn btn-outline-teal" style="font-size:13px;">View on GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section certs-section" id="certifications">
+    <div style="max-width:1100px;margin:0 auto;text-align:center;">
+      <div class="section-label" style="justify-content:center;">Certifications</div>
+      <h2 class="section-h2">Professional Credentials</h2>
+      <p class="section-sub">Vendor-certified across security, cloud, and infrastructure — validated by industry-leading bodies.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-icon cert-icon-ca">CA</div>
+        <div class="cert-info">
+          <div class="cert-name">DevSecOps</div>
+          <div class="cert-issuer">Cyber Agoge</div>
+          <div class="cert-validity">✓ Valid to Dec 2028</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon cert-icon-aws">AWS</div>
+        <div class="cert-info">
+          <div class="cert-name">AWS Certified Cloud Practitioner</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+          <div class="cert-validity">✓ Valid to Jun 2027</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon cert-icon-pen">PEN</div>
+        <div class="cert-info">
+          <div class="cert-name">CompTIA PenTest+ ce</div>
+          <div class="cert-issuer">CompTIA</div>
+          <div class="cert-validity">✓ Valid to Apr 2027</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon cert-icon-gh">GH</div>
+        <div class="cert-info">
+          <div class="cert-name">GitHub Foundations</div>
+          <div class="cert-issuer">GitHub</div>
+          <div class="cert-validity">✓ Valid to Aug 2027</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon cert-icon-hcl">TF</div>
+        <div class="cert-info">
+          <div class="cert-name">HashiCorp Terraform Associate (003)</div>
+          <div class="cert-issuer">HashiCorp</div>
+          <div class="cert-validity">✓ Valid to Jun 2026</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon cert-icon-ceh">CEH</div>
+        <div class="cert-info">
+          <div class="cert-name">Certified Ethical Hacker (CEH)</div>
+          <div class="cert-issuer">EC-Council</div>
+          <div class="cert-validity">✓ Valid to Sep 2026</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon cert-icon-csa">CSA</div>
+        <div class="cert-info">
+          <div class="cert-name">CompTIA CySA+ ce</div>
+          <div class="cert-issuer">CompTIA</div>
+          <div class="cert-validity">✓ Valid to Oct 2026</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon cert-icon-ccnp">CCNP</div>
+        <div class="cert-info">
+          <div class="cert-name">Cisco Certified Network Professional</div>
+          <div class="cert-issuer">Cisco</div>
+          <div class="cert-validity">✓ Active</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1100px;margin:24px auto 0;text-align:center;">
+      <a href="https://www.linkedin.com/in/stephen-aihebholoria-devsecops-pent-ceh-cysa-isc2-b220b157/details/certifications/" target="_blank" class="btn btn-outline-teal">View all credentials on LinkedIn →</a>
     </div>
   </section>
 
@@ -830,9 +1046,10 @@
       <div class="service-card">
         <div class="service-icon">☁️</div>
         <div class="service-title">Cloud Infrastructure</div>
-        <div class="service-desc">Design and manage resilient, secure, and cost-optimised cloud environments.</div>
+        <div class="service-desc">Design and manage resilient, secure, and cost-optimised cloud environments on Azure and AWS.</div>
         <div class="service-items">
           <div class="service-item">Azure architecture design</div>
+          <div class="service-item">AWS (EC2, S3, Lambda, IAM)</div>
           <div class="service-item">Infrastructure as Code (Terraform)</div>
           <div class="service-item">Monitoring &amp; alerting (Sentinel)</div>
           <div class="service-item">Disaster recovery planning</div>
@@ -897,9 +1114,11 @@
     <div class="footer-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
       <a href="#services">Services</a>
       <a href="mailto:aihebest@gmail.com">Email</a>
       <a href="https://github.com/aihebest" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/stephen-aihebholoria-devsecops-pent-ceh-cysa-isc2-b220b157/" target="_blank" style="color:var(--teal);">LinkedIn</a>
     </div>
   </footer>
 
