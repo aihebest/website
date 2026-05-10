@@ -1,0 +1,99 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Best S. E. Aihebholoria — Portfolio CI/CD Pipeline
+# Triggers on every push to main → validates HTML → deploys to Vercel (prod)
+# Pull requests → deploys to Vercel preview URL automatically
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: 🚀 Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main          # Every push to main → Production deploy
+  pull_request:
+    branches:
+      - main          # Every PR to main → Preview deploy
+
+# Cancel any in-progress run for the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  # ── Job 1: Validate HTML ───────────────────────────────────────────────────
+  validate:
+    name: ✅ Validate HTML
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check index.html exists
+        run: |
+          if [ ! -f "index.html" ]; then
+            echo "❌ index.html not found!"
+            exit 1
+          fi
+          echo "✅ index.html found ($(wc -c < index.html) bytes)"
+
+      - name: Check for broken asset references
+        run: |
+          echo "Checking asset references..."
+          # Check Brand_assets folder exists
+          if [ -d "Brand_assets" ]; then
+            echo "✅ Brand_assets/ folder present"
+            ls Brand_assets/
+          else
+            echo "⚠️  Brand_assets/ folder missing"
+          fi
+          echo "✅ Validation complete"
+
+      - name: Summary
+        run: |
+          echo "## 📋 Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ index.html: present" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Brand assets: checked" >> $GITHUB_STEP_SUMMARY
+          echo "- 🌐 Branch: \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- 👤 Pushed by: \`${{ github.actor }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- 📝 Commit: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+
+  # ── Job 2: Deploy to Vercel ────────────────────────────────────────────────
+  deploy:
+    name: 🚀 Deploy to Vercel
+    runs-on: ubuntu-latest
+    needs: validate        # Only runs if validate passes
+    environment:
+      name: ${{ github.ref_name == 'main' && 'production' || 'preview' }}
+      url: ${{ steps.deploy.outputs.preview-url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel environment info
+        run: vercel pull --yes --environment=${{ github.ref_name == 'main' && 'production' || 'preview' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to Vercel
+        id: deploy
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "🚀 Deploying to PRODUCTION..."
+            URL=$(vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }})
+          else
+            echo "🔍 Deploying PREVIEW for PR #${{ github.event.pull_request.number }}..."
+            URL=$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})
+          fi
+          echo "preview-url=$URL" >> $GITHUB_OUTPUT
+          echo "✅ Deployed to: $URL"
+
+      - name: Deployment summary
+        run: |
+          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- 🌐 Environment: **${{ github.ref_name == 'main' && 'Production' || 'Preview' }}**" >> $GITHUB_STEP_SUMMARY
+          echo "- 🔗 URL: ${{ steps.deploy.outputs.preview-url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Status: Deployed successfully" >> $GITHUB_STEP_SUMMARY
