@@ -771,6 +771,128 @@
         </div>
       </div>
 
+      <!-- Threat Modelling - Desicon Oracle EBS -->
+      <div class="project-card">
+        <div class="project-mockup">
+          <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrT" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#00C9A7" opacity="0.6"/>
+              </marker>
+              <marker id="arrRed" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#f87171" opacity="0.7"/>
+              </marker>
+              <filter id="gT"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect width="560" height="240" fill="#0a1828"/>
+
+            <!-- AWS Cloud box -->
+            <rect x="180" y="14" width="196" height="134" rx="10" fill="rgba(255,153,0,0.05)" stroke="rgba(255,153,0,0.3)" stroke-width="1.2" stroke-dasharray="4 3"/>
+            <text x="278" y="28" font-family="Space Mono,monospace" font-size="7" fill="#ff9900" text-anchor="middle" font-weight="700">☁ AWS Cloud</text>
+
+            <!-- Oracle EBS -->
+            <rect x="310" y="38" width="52" height="38" rx="7" fill="#172d48" stroke="rgba(255,153,0,0.5)" stroke-width="1.2" filter="url(#gT)"/>
+            <text x="336" y="54" font-family="Space Mono,monospace" font-size="6.5" fill="#ff9900" text-anchor="middle" font-weight="700">Oracle</text>
+            <text x="336" y="65" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">EBS / ERP</text>
+
+            <!-- AI Models -->
+            <rect x="234" y="38" width="56" height="38" rx="7" fill="#172d48" stroke="rgba(0,201,167,0.4)" stroke-width="1.2"/>
+            <text x="262" y="54" font-family="Space Mono,monospace" font-size="6.5" fill="#00C9A7" text-anchor="middle" font-weight="700">AI Models</text>
+            <text x="262" y="65" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">Predictive</text>
+
+            <!-- Data Storage -->
+            <rect x="272" y="102" width="60" height="32" rx="7" fill="#112237" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="302" y="116" font-family="Space Mono,monospace" font-size="6.5" fill="#B0C0D4" text-anchor="middle" font-weight="700">Data Store</text>
+            <text x="302" y="127" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">S3 / RDS</text>
+
+            <!-- Arrows inside AWS -->
+            <line x1="290" y1="57" x2="309" y2="57" stroke="#00C9A7" stroke-width="1" marker-end="url(#arrT)" opacity="0.5"/>
+            <line x1="302" y1="76" x2="302" y2="101" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrT)"/>
+            <line x1="272" y1="115" x2="262" y2="77" stroke="rgba(255,255,255,0.2)" stroke-width="1" marker-end="url(#arrT)"/>
+
+            <!-- On-Premise box -->
+            <rect x="14" y="14" width="148" height="134" rx="10" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.2)" stroke-width="1.2" stroke-dasharray="4 3"/>
+            <text x="88" y="28" font-family="Space Mono,monospace" font-size="7" fill="#60a5fa" text-anchor="middle" font-weight="700">⚙ On-Premise</text>
+
+            <!-- Sensors -->
+            <rect x="24" y="38" width="60" height="30" rx="6" fill="#112237" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <text x="54" y="51" font-family="Space Mono,monospace" font-size="6.5" fill="#60a5fa" text-anchor="middle" font-weight="700">Oil Field</text>
+            <text x="54" y="62" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">Sensors</text>
+
+            <!-- Field Equip -->
+            <rect x="94" y="38" width="60" height="30" rx="6" fill="#112237" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <text x="124" y="51" font-family="Space Mono,monospace" font-size="6.5" fill="#60a5fa" text-anchor="middle" font-weight="700">Field</text>
+            <text x="124" y="62" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">Equipment</text>
+
+            <!-- Ops Team -->
+            <rect x="54" y="102" width="70" height="30" rx="6" fill="#112237" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <text x="89" y="115" font-family="Space Mono,monospace" font-size="6.5" fill="#60a5fa" text-anchor="middle" font-weight="700">Operations</text>
+            <text x="89" y="126" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">Team</text>
+
+            <!-- Data flow arrows on-premise -->
+            <line x1="54" y1="68" x2="200" y2="108" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arrT)"/>
+            <line x1="124" y1="68" x2="210" y2="108" stroke="rgba(255,255,255,0.15)" stroke-width="1" marker-end="url(#arrT)"/>
+            <line x1="162" y1="117" x2="336" y2="76" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" stroke-dasharray="2 2"/>
+
+            <!-- THREAT VECTORS (bottom row) -->
+            <rect x="14" y="170" width="80" height="28" rx="6" fill="rgba(248,113,113,0.12)" stroke="rgba(248,113,113,0.4)" stroke-width="1"/>
+            <text x="54" y="181" font-family="Space Mono,monospace" font-size="6" fill="#f87171" text-anchor="middle" font-weight="700">Data Poisoning</text>
+            <text x="54" y="191" font-family="Inter,sans-serif" font-size="5.5" fill="#7A8FA6" text-anchor="middle">→ Sensors</text>
+
+            <rect x="104" y="170" width="80" height="28" rx="6" fill="rgba(248,113,113,0.12)" stroke="rgba(248,113,113,0.4)" stroke-width="1"/>
+            <text x="144" y="181" font-family="Space Mono,monospace" font-size="6" fill="#f87171" text-anchor="middle" font-weight="700">Model Extract</text>
+            <text x="144" y="191" font-family="Inter,sans-serif" font-size="5.5" fill="#7A8FA6" text-anchor="middle">→ AI Models</text>
+
+            <rect x="194" y="170" width="80" height="28" rx="6" fill="rgba(248,113,113,0.12)" stroke="rgba(248,113,113,0.4)" stroke-width="1"/>
+            <text x="234" y="181" font-family="Space Mono,monospace" font-size="6" fill="#f87171" text-anchor="middle" font-weight="700">Adversarial</text>
+            <text x="234" y="191" font-family="Inter,sans-serif" font-size="5.5" fill="#7A8FA6" text-anchor="middle">→ AI Models</text>
+
+            <rect x="284" y="170" width="80" height="28" rx="6" fill="rgba(248,113,113,0.12)" stroke="rgba(248,113,113,0.4)" stroke-width="1"/>
+            <text x="324" y="181" font-family="Space Mono,monospace" font-size="6" fill="#f87171" text-anchor="middle" font-weight="700">Cloud Vulns</text>
+            <text x="324" y="191" font-family="Inter,sans-serif" font-size="5.5" fill="#7A8FA6" text-anchor="middle">→ Oracle EBS</text>
+
+            <rect x="374" y="170" width="76" height="28" rx="6" fill="rgba(248,113,113,0.12)" stroke="rgba(248,113,113,0.4)" stroke-width="1"/>
+            <text x="412" y="181" font-family="Space Mono,monospace" font-size="6" fill="#f87171" text-anchor="middle" font-weight="700">Insider Threat</text>
+            <text x="412" y="191" font-family="Inter,sans-serif" font-size="5.5" fill="#7A8FA6" text-anchor="middle">→ Ops Team</text>
+
+            <!-- Risk summary badge -->
+            <rect x="460" y="14" width="86" height="50" rx="8" fill="#172d48" stroke="rgba(248,113,113,0.4)" stroke-width="1.2"/>
+            <text x="503" y="30" font-family="Space Mono,monospace" font-size="7" fill="#f87171" text-anchor="middle" font-weight="700">RISKS FOUND</text>
+            <text x="490" y="47" font-family="Inter,sans-serif" font-size="18" font-weight="800" fill="#f87171">4</text>
+            <text x="490" y="57" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6">High</text>
+            <text x="520" y="47" font-family="Inter,sans-serif" font-size="18" font-weight="800" fill="#fbbf24">3</text>
+            <text x="520" y="57" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6">Medium</text>
+
+            <!-- Methodology labels -->
+            <rect x="460" y="74" width="86" height="74" rx="8" fill="#112237" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+            <text x="503" y="88" font-family="Space Mono,monospace" font-size="6.5" fill="#00C9A7" text-anchor="middle" font-weight="700">Methodology</text>
+            <text x="503" y="101" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">STRIDE</text>
+            <text x="503" y="113" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">MITRE ATT&amp;CK</text>
+            <text x="503" y="125" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">DREAD</text>
+            <text x="503" y="137" font-family="Inter,sans-serif" font-size="6.5" fill="#B0C0D4" text-anchor="middle">Kill Chain</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Threat Modelling</span>
+            <span class="tag">STRIDE</span>
+            <span class="tag-grey tag">MITRE ATT&amp;CK</span>
+            <span class="tag-grey tag">Oracle EBS</span>
+            <span class="tag-grey tag">AWS</span>
+            <span class="tag-grey tag">AI Security</span>
+          </div>
+          <div class="project-title">AI Threat Modelling — Desicon Engineering &amp; Oracle EBS</div>
+          <div class="project-desc">
+            Led an AI Threat Modelling Workshop for Desicon Engineering (oil servicing), targeting their AWS-hosted Oracle EBS and AI prediction systems. Ran all scenarios against the cyber attack kill chain using <strong style="color:var(--slate-light)">STRIDE, MITRE ATT&amp;CK, and DREAD</strong> for control gap assessment. Identified <strong style="color:#f87171">4 high risks and 3 medium risks</strong> — including data poisoning, model extraction, adversarial attacks, and insider threats.
+          </div>
+          <div class="project-meta">
+            <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>Lead DevSecOps Architect</div>
+            <div class="project-meta-item"><span class="meta-label">Client:&nbsp;</span>Desicon Engineering Ltd</div>
+          </div>
+          <a href="https://github.com/aihebest/Threat-Modelling-Desicon-OracleEBS-Summary" target="_blank" class="btn btn-outline-teal" style="font-size:13px;margin-top:16px;">View on GitHub →</a>
+        </div>
+      </div>
+
       <!-- Legal Service Desk -->
       <div class="project-card">
         <div class="project-mockup">
