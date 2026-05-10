@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best S. E. Aihebholoria — DevSecOps Engineer & Solutions Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:        #0B1929;
+      --navy-2:      #112237;
+      --navy-3:      #172d48;
+      --teal:        #00C9A7;
+      --teal-dark:   #00a589;
+      --teal-soft:   rgba(0,201,167,0.12);
+      --teal-glow:   rgba(0,201,167,0.22);
+      --white:       #ffffff;
+      --warm-white:  #EEF4FF;
+      --slate:       #7A8FA6;
+      --slate-light: #B0C0D4;
+      --orange:      #FFB835;
+      --border:      rgba(255,255,255,0.07);
+      --border-2:    rgba(255,255,255,0.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; height: 100%; -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--teal-soft); color: var(--teal); }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px; font-weight: 400; line-height: 1.7;
+      color: var(--warm-white);
+      background: var(--navy);
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.03em; line-height: 1.15;
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--navy-3); border-radius: 3px; }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    /* ANNOUNCE BAR */
+    .announce-bar {
+      position: relative; z-index: 100;
+      background: var(--teal); color: var(--navy);
+      font-size: 13px; font-weight: 600; text-align: center;
+      padding: 9px 20px; letter-spacing: 0.02em;
+    }
+    .announce-bar a { color: var(--navy); text-decoration: underline; text-decoration-color: rgba(11,25,41,0.4); margin-left: 6px; }
+
+    /* NAV */
+    .site-nav {
+      position: sticky; top: 0; z-index: 99;
+      display: flex; align-items: center;
+      padding: 0 48px; height: 68px;
+      background: rgba(11,25,41,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-logo-text { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
+    .nav-logo-text span { color: var(--teal); }
+    .nav-links { display: flex; gap: 4px; margin-left: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--slate);
+      text-decoration: none; padding: 6px 14px; border-radius: 8px;
+      transition: color 0.18s, background 0.18s;
+    }
+    .nav-links a:hover { color: var(--white); background: var(--border); }
+    .nav-ctas { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      height: 40px; padding: 0 20px; border-radius: 10px; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s, background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-ghost { background: transparent; color: var(--slate-light); border: 1px solid var(--border-2); }
+    .btn-ghost:hover { color: var(--white); background: var(--border); border-color: var(--border-2); }
+    .btn-teal {
+      background: var(--teal); color: var(--navy);
+      box-shadow: 0 4px 24px rgba(0,201,167,0.28), 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .btn-teal:hover { background: #00ddb9; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,201,167,0.38), 0 1px 4px rgba(0,0,0,0.3); }
+    .btn-lg { height: 50px; padding: 0 28px; font-size: 15px; border-radius: 12px; }
+    .btn-outline-teal { background: transparent; color: var(--teal); border: 1.5px solid var(--teal); }
+    .btn-outline-teal:hover { background: var(--teal-soft); transform: translateY(-2px); box-shadow: 0 4px 20px var(--teal-glow); }
+
+    /* HERO */
+    .hero {
+      position: relative; min-height: calc(100vh - 110px);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; padding: 80px 48px;
+    }
+    .hero-bg-glow {
+      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse at 40% 40%, rgba(0,201,167,0.13) 0%, transparent 65%),
+                  radial-gradient(ellipse at 70% 60%, rgba(0,100,200,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid-overlay {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1100px; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal-soft); border: 1px solid var(--teal-glow);
+      border-radius: 100px; padding: 5px 14px 5px 8px;
+      font-size: 12px; font-weight: 600; color: var(--teal);
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 22px;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,201,167,0.6); }
+      50% { opacity: 0.8; box-shadow: 0 0 0 5px rgba(0,201,167,0); }
+    }
+    .hero-name {
+      font-size: clamp(38px, 5vw, 60px); font-weight: 800; color: var(--white);
+      letter-spacing: -0.04em; line-height: 1.08; margin-bottom: 10px;
+    }
+    .hero-name .name-teal { color: var(--teal); }
+    .hero-title {
+      font-size: 16px; font-weight: 500; color: var(--slate-light);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .hero-title .divider { color: var(--teal); opacity: 0.5; }
+    .hero-tagline {
+      font-size: 17px; font-weight: 400; color: var(--slate-light);
+      line-height: 1.7; max-width: 480px; margin-bottom: 36px;
+    }
+    .hero-tagline strong { color: var(--white); font-weight: 600; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 48px;
+      padding-top: 32px; border-top: 1px solid var(--border); flex-wrap: wrap;
+    }
+    .hero-stat-val {
+      font-size: 28px; font-weight: 800; color: var(--white);
+      letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px;
+    }
+    .hero-stat-val span { color: var(--teal); }
+    .hero-stat-label { font-size: 12px; color: var(--slate); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* HERO SHIELD VISUAL */
+    .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+    .shield-wrap { position: relative; animation: float 4s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    .shield-ring {
+      position: absolute; inset: -40px; border-radius: 50%;
+      border: 1px solid rgba(0,201,167,0.12);
+      animation: ring-pulse 3s ease-in-out infinite;
+    }
+    .shield-ring-2 {
+      position: absolute; inset: -80px; border-radius: 50%;
+      border: 1px solid rgba(0,201,167,0.06);
+      animation: ring-pulse 3s ease-in-out infinite 0.5s;
+    }
+    @keyframes ring-pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.03); } }
+
+    /* SECTIONS */
+    .section { padding: 96px 80px; }
+    .section-center { text-align: center; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; font-weight: 700; color: var(--teal);
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-label::before { content: '//'; opacity: 0.5; }
+    .section-h2 {
+      font-size: clamp(30px, 4vw, 46px); font-weight: 800; color: var(--white);
+      letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 17px; color: var(--slate-light); line-height: 1.7; max-width: 560px; }
+    .section-center .section-sub { margin: 0 auto; }
+
+    /* ABOUT */
+    .about-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-copy p { font-size: 16px; color: var(--slate-light); line-height: 1.8; margin-bottom: 16px; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .about-copy strong { color: var(--white); font-weight: 600; }
+    .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .highlight-card {
+      background: var(--navy-2); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .highlight-card:hover { border-color: var(--teal-glow); transform: translateY(-3px); }
+    .highlight-icon { font-size: 24px; margin-bottom: 12px; }
+    .highlight-title { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .highlight-desc { font-size: 13px; color: var(--slate); line-height: 1.6; }
+
+    /* STACK */
+    .stack-section { background: var(--navy-2); }
+    .stack-grid { max-width: 1100px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .stack-col-title {
+      font-size: 11px; font-weight: 700; color: var(--teal);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      font-family: 'Space Mono', monospace;
+      margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+    }
+    .stack-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 0; border-bottom: 1px solid var(--border);
+      font-size: 14px; color: var(--slate-light); font-weight: 500;
+      transition: color 0.15s;
+    }
+    .stack-item:last-child { border-bottom: none; }
+    .stack-item:hover { color: var(--white); }
+    .stack-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; opacity: 0.7; }
+
+    /* PROJECTS */
+    .projects-grid { max-width: 1100px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .project-card {
+      background: var(--navy-2); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .project-card:hover { border-color: rgba(0,201,167,0.3); transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,201,167,0.12); }
+    .project-mockup { background: #0f1e32; border-bottom: 1px solid var(--border); overflow: hidden; height: 240px; }
+    .project-mockup svg { width: 100%; height: 100%; display: block; }
+    .project-body { padding: 28px; }
+    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .tag {
+      display: inline-flex; align-items: center;
+      background: var(--teal-soft); color: var(--teal);
+      border: 1px solid var(--teal-glow);
+      border-radius: 100px; padding: 3px 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+      font-family: 'Space Mono', monospace;
+    }
+    .tag-grey { background: rgba(255,255,255,0.05); color: var(--slate-light); border-color: var(--border); }
+    .project-title { font-size: 20px; font-weight: 700; color: var(--white); letter-spacing: -0.02em; margin-bottom: 8px; }
+    .project-desc { font-size: 14px; color: var(--slate); line-height: 1.7; margin-bottom: 20px; }
+    .project-meta { display: flex; gap: 20px; flex-wrap: wrap; }
+    .project-meta-item { font-size: 12px; font-weight: 600; color: var(--slate-light); display: flex; align-items: center; gap: 5px; }
+    .project-meta-item .meta-label { color: var(--slate); font-weight: 400; }
+
+    /* SERVICES */
+    .services-section { background: var(--navy-2); }
+    .services-grid { max-width: 1100px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .service-card {
+      background: var(--navy); border: 1px solid var(--border);
+      border-radius: 18px; padding: 32px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover { border-color: rgba(0,201,167,0.25); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,201,167,0.08); }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--teal-soft); border: 1px solid var(--teal-glow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .service-title { font-size: 17px; font-weight: 700; color: var(--white); letter-spacing: -0.02em; margin-bottom: 10px; }
+    .service-desc { font-size: 14px; color: var(--slate); line-height: 1.7; }
+    .service-items { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .service-item { font-size: 13px; color: var(--slate-light); display: flex; align-items: center; gap: 7px; }
+    .service-item::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+    /* MICROSOFT STRIP */
+    .ms-strip {
+      background: linear-gradient(135deg, #0f2a4a 0%, #0d1f38 50%, #0a2540 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 64px 80px;
+    }
+    .ms-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+    .ms-heading { font-size: 28px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; margin-bottom: 12px; }
+    .ms-sub { font-size: 16px; color: var(--slate-light); line-height: 1.7; max-width: 540px; }
+    .ms-logos { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .ms-logo-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border-2);
+      border-radius: 100px; padding: 8px 18px;
+      font-size: 13px; font-weight: 600; color: var(--slate-light);
+    }
+    .ms-logo-pill .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot-azure { background: #0078D4; }
+    .dot-m365 { background: #D83B01; }
+    .dot-sentinel { background: #773ADC; }
+    .dot-devops { background: #0078D4; }
+    .dot-erp { background: #00C9A7; }
+
+    /* CTA */
+    .cta-section { padding: 96px 80px; text-align: center; position: relative; overflow: hidden; }
+    .cta-glow {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse at center, rgba(0,201,167,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .cta-h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: var(--white); letter-spacing: -0.04em; margin-bottom: 18px; }
+    .cta-sub { font-size: 17px; color: var(--slate-light); line-height: 1.7; margin-bottom: 36px; }
+    .cta-email {
+      font-family: 'Space Mono', monospace; font-size: 13px; color: var(--teal);
+      background: var(--teal-soft); border: 1px solid var(--teal-glow);
+      border-radius: 100px; padding: 8px 20px; display: inline-block; margin-bottom: 28px;
+      text-decoration: none; transition: background 0.18s, box-shadow 0.18s;
+    }
+    .cta-email:hover { background: rgba(0,201,167,0.2); box-shadow: 0 0 24px var(--teal-glow); }
+    .cta-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy-2); border-top: 1px solid var(--border);
+      padding: 40px 80px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left { font-size: 13px; color: var(--slate); }
+    .footer-left strong { color: var(--slate-light); font-weight: 500; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--slate); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--teal); }
+
+    /* FADE ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(24px); animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { order: -1; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .stack-grid { grid-template-columns: repeat(2,1fr); }
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .ms-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .site-nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .section { padding: 64px 24px; }
+      .hero { padding: 64px 24px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-highlights { grid-template-columns: 1fr; }
+      .ms-strip { padding: 48px 24px; }
+      .cta-section { padding: 72px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+      .hero-stats { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce-bar">
+    🟢 Available for enterprise collaborations &amp; Microsoft partnership projects
+    <a href="#contact">Let's talk →</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="#" class="nav-logo" aria-label="Home">
+      <img src="Brand_assets/logo.png" alt="InfraShield logo" />
+      <span class="nav-logo-text">Infra<span>Shield</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#contact" class="btn btn-teal">Hire Me →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-inner">
+
+      <!-- LEFT COPY -->
+      <div class="hero-copy">
+        <div class="hero-badge fade-up">
+          <div class="hero-badge-dot"></div>
+          DevSecOps Engineer
+        </div>
+        <h1 class="hero-name fade-up delay-1">
+          Best S. E.<br/><span class="name-teal">Aihebholoria</span>
+        </h1>
+        <p class="hero-title fade-up delay-2">
+          Solutions Architect
+          <span class="divider">·</span>
+          Microsoft Ecosystem
+          <span class="divider">·</span>
+          ERP Builder
+        </p>
+        <p class="hero-tagline fade-up delay-3">
+          Securing infrastructure, <strong>building scalable enterprise systems</strong>,
+          and enabling digital transformation for organisations — from helpdesks
+          to full ERP deployments.
+        </p>
+        <div class="hero-ctas fade-up delay-4">
+          <a href="#projects" class="btn btn-teal btn-lg">View Projects →</a>
+          <a href="#contact" class="btn btn-outline-teal btn-lg">Let's Collaborate</a>
+        </div>
+        <div class="hero-stats fade-up delay-5">
+          <div>
+            <div class="hero-stat-val">2<span>+</span></div>
+            <div class="hero-stat-label">Live Projects</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">5<span>+</span></div>
+            <div class="hero-stat-label">Years Experience</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">MS<span>·</span>Azure</div>
+            <div class="hero-stat-label">Ecosystem</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT VISUAL -->
+      <div class="hero-visual fade-up delay-3">
+        <div class="shield-wrap">
+          <div class="shield-ring"></div>
+          <div class="shield-ring-2"></div>
+          <svg width="280" height="320" viewBox="0 0 280 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="shieldGrad" cx="50%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#172d48"/>
+                <stop offset="100%" stop-color="#0B1929"/>
+              </radialGradient>
+              <linearGradient id="tealGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00C9A7"/>
+                <stop offset="100%" stop-color="#00a589"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <path d="M140 18 L248 64 L248 154 C248 218 200 270 140 294 C80 270 32 218 32 154 L32 64 Z"
+                  fill="url(#shieldGrad)" stroke="url(#tealGrad)" stroke-width="2"/>
+            <path d="M140 36 L232 76 L232 154 C232 208 192 254 140 276 C88 254 48 208 48 154 L48 76 Z"
+                  fill="none" stroke="rgba(0,201,167,0.2)" stroke-width="1"/>
+            <line x1="80" y1="140" x2="200" y2="140" stroke="rgba(0,201,167,0.18)" stroke-width="1"/>
+            <line x1="140" y1="80" x2="140" y2="220" stroke="rgba(0,201,167,0.18)" stroke-width="1"/>
+            <circle cx="140" cy="140" r="48" fill="none" stroke="rgba(0,201,167,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+            <rect x="114" y="148" width="52" height="42" rx="6" fill="url(#tealGrad)" opacity="0.95" filter="url(#glow)"/>
+            <path d="M122 148 L122 134 C122 120 158 120 158 134 L158 148" stroke="url(#tealGrad)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <circle cx="140" cy="170" r="7" fill="#0B1929"/>
+            <rect x="138" y="170" width="4" height="10" rx="2" fill="#0B1929"/>
+            <circle cx="80" cy="140" r="4" fill="#00C9A7" filter="url(#glow)"/>
+            <circle cx="200" cy="140" r="4" fill="#00C9A7" filter="url(#glow)"/>
+            <circle cx="140" cy="80" r="4" fill="#00C9A7" filter="url(#glow)"/>
+            <circle cx="140" cy="220" r="4" fill="#00C9A7" filter="url(#glow)"/>
+            <circle cx="100" cy="100" r="3" fill="rgba(0,201,167,0.5)"/>
+            <circle cx="180" cy="100" r="3" fill="rgba(0,201,167,0.5)"/>
+            <circle cx="100" cy="185" r="3" fill="rgba(0,201,167,0.5)"/>
+            <circle cx="180" cy="185" r="3" fill="rgba(0,201,167,0.5)"/>
+            <line x1="80" y1="140" x2="100" y2="100" stroke="rgba(0,201,167,0.1)" stroke-width="1"/>
+            <line x1="200" y1="140" x2="180" y2="100" stroke="rgba(0,201,167,0.1)" stroke-width="1"/>
+            <line x1="80" y1="140" x2="100" y2="185" stroke="rgba(0,201,167,0.1)" stroke-width="1"/>
+            <line x1="200" y1="140" x2="180" y2="185" stroke="rgba(0,201,167,0.1)" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <div class="section-label">About</div>
+        <h2 class="section-h2">Building secure systems<br/>that enterprises rely on</h2>
+        <p>I'm <strong>Best S. E. Aihebholoria</strong>, a DevSecOps Engineer and Solutions Architect
+          with a passion for building enterprise-grade systems that are <strong>secure by design</strong>
+          and scalable by nature.</p>
+        <p>My work spans the full lifecycle — from <strong>security assessments and infrastructure hardening</strong>
+          to building custom service desks, helpdesk platforms, and ERP solutions for organisations.
+          I operate deep within the <strong>Microsoft ecosystem</strong> — Azure, M365, Entra ID, Sentinel —
+          and collaborate with companies to digitally transform their operations.</p>
+        <p>Whether it's securing a cloud environment, building a legal service desk from scratch,
+          or architecting an ERP system with Microsoft, I bring engineering rigour and business clarity
+          to every project.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="highlight-icon">🛡️</div>
+          <div class="highlight-title">DevSecOps</div>
+          <div class="highlight-desc">Security embedded into every stage of the development and deployment pipeline.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">☁️</div>
+          <div class="highlight-title">Cloud Architecture</div>
+          <div class="highlight-desc">Azure-first infrastructure design, IaC, and cloud-native security posture management.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">⚙️</div>
+          <div class="highlight-title">Enterprise Apps</div>
+          <div class="highlight-desc">Custom service desks, helpdesk platforms, and ERP systems built for real organisations.</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🤝</div>
+          <div class="highlight-title">Microsoft Partner</div>
+          <div class="highlight-desc">Collaborating with Microsoft to build and deploy ERP and M365-integrated solutions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section stack-section" id="stack">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-label">Tech Stack</div>
+      <h2 class="section-h2">Tools I work with</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-col">
+        <div class="stack-col-title">Security</div>
+        <div class="stack-item"><span class="stack-dot"></span>SIEM / SOAR</div>
+        <div class="stack-item"><span class="stack-dot"></span>Microsoft Sentinel</div>
+        <div class="stack-item"><span class="stack-dot"></span>Vulnerability Assessment</div>
+        <div class="stack-item"><span class="stack-dot"></span>Penetration Testing</div>
+        <div class="stack-item"><span class="stack-dot"></span>Zero Trust Architecture</div>
+        <div class="stack-item"><span class="stack-dot"></span>ISO 27001 / NIST</div>
+        <div class="stack-item"><span class="stack-dot"></span>SLA Compliance</div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-col-title">Cloud & DevOps</div>
+        <div class="stack-item"><span class="stack-dot"></span>Microsoft Azure</div>
+        <div class="stack-item"><span class="stack-dot"></span>Azure DevOps</div>
+        <div class="stack-item"><span class="stack-dot"></span>Docker / Kubernetes</div>
+        <div class="stack-item"><span class="stack-dot"></span>Terraform / IaC</div>
+        <div class="stack-item"><span class="stack-dot"></span>GitHub Actions CI/CD</div>
+        <div class="stack-item"><span class="stack-dot"></span>AWS / GCP</div>
+        <div class="stack-item"><span class="stack-dot"></span>Linux Administration</div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-col-title">Microsoft Ecosystem</div>
+        <div class="stack-item"><span class="stack-dot"></span>Microsoft 365</div>
+        <div class="stack-item"><span class="stack-dot"></span>Entra ID (Azure AD)</div>
+        <div class="stack-item"><span class="stack-dot"></span>Dynamics 365</div>
+        <div class="stack-item"><span class="stack-dot"></span>Power Platform</div>
+        <div class="stack-item"><span class="stack-dot"></span>SharePoint / Teams</div>
+        <div class="stack-item"><span class="stack-dot"></span>Intune / Endpoint</div>
+        <div class="stack-item"><span class="stack-dot"></span>Defender for Cloud</div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-col-title">ITSM & Dev</div>
+        <div class="stack-item"><span class="stack-dot"></span>Custom ITSM Platforms</div>
+        <div class="stack-item"><span class="stack-dot"></span>ServiceNow</div>
+        <div class="stack-item"><span class="stack-dot"></span>Jira / Confluence</div>
+        <div class="stack-item"><span class="stack-dot"></span>Python / Bash / PS</div>
+        <div class="stack-item"><span class="stack-dot"></span>REST APIs / GraphQL</div>
+        <div class="stack-item"><span class="stack-dot"></span>SQL / PostgreSQL</div>
+        <div class="stack-item"><span class="stack-dot"></span>Node.js / TypeScript</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div style="max-width:1100px;margin:0 auto;text-align:center;">
+      <div class="section-label" style="justify-content:center;">Projects</div>
+      <h2 class="section-h2">Live enterprise systems</h2>
+      <p class="section-sub">Real platforms built and deployed for real organisations — handling legal workflows, IT operations, and compliance tracking.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Legal Service Desk -->
+      <div class="project-card">
+        <div class="project-mockup">
+          <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="navGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a3a5c"/><stop offset="100%" stop-color="#0f2640"/>
+              </linearGradient>
+            </defs>
+            <rect width="148" height="240" fill="url(#navGrad)"/>
+            <rect x="12" y="12" width="124" height="36" rx="8" fill="rgba(255,255,255,0.07)"/>
+            <rect x="20" y="20" width="20" height="20" rx="5" fill="#00C9A7" opacity="0.8"/>
+            <rect x="46" y="23" width="60" height="7" rx="3" fill="rgba(255,255,255,0.7)"/>
+            <rect x="46" y="33" width="40" height="5" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="0" y="62" width="148" height="24" fill="rgba(0,201,167,0.15)"/>
+            <rect x="12" y="68" width="8" height="8" rx="2" fill="#00C9A7"/>
+            <rect x="26" y="69" width="55" height="6" rx="2" fill="rgba(255,255,255,0.85)"/>
+            <rect x="12" y="96" width="70" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+            <rect x="12" y="110" width="6" height="6" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="24" y="111" width="50" height="4" rx="2" fill="rgba(255,255,255,0.35)"/>
+            <rect x="12" y="122" width="6" height="6" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="24" y="123" width="45" height="4" rx="2" fill="rgba(255,255,255,0.35)"/>
+            <rect x="12" y="134" width="6" height="6" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="24" y="135" width="52" height="4" rx="2" fill="rgba(255,255,255,0.35)"/>
+            <rect x="12" y="155" width="70" height="5" rx="2" fill="rgba(255,255,255,0.15)"/>
+            <rect x="12" y="169" width="6" height="6" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="24" y="170" width="60" height="4" rx="2" fill="rgba(255,255,255,0.35)"/>
+            <rect x="12" y="181" width="6" height="6" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="24" y="182" width="50" height="4" rx="2" fill="rgba(255,255,255,0.35)"/>
+            <rect x="148" width="412" height="240" fill="#f8fafc"/>
+            <rect x="148" y="0" width="412" height="44" fill="white"/>
+            <rect x="160" y="14" width="130" height="10" rx="3" fill="#1e3a5f"/>
+            <rect x="148" y="43" width="412" height="1" fill="#e5e7eb"/>
+            <rect x="158" y="54" width="86" height="48" rx="6" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+            <text x="166" y="72" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#111">2</text>
+            <rect x="166" y="76" width="50" height="4" rx="2" fill="#9ca3af"/>
+            <rect x="252" y="54" width="86" height="48" rx="6" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+            <text x="260" y="72" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#111">1</text>
+            <rect x="260" y="76" width="55" height="4" rx="2" fill="#9ca3af"/>
+            <rect x="346" y="54" width="86" height="48" rx="6" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+            <text x="354" y="72" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#111">0</text>
+            <rect x="354" y="76" width="60" height="4" rx="2" fill="#9ca3af"/>
+            <rect x="440" y="54" width="108" height="48" rx="6" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+            <text x="448" y="72" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#111">0</text>
+            <rect x="448" y="76" width="68" height="4" rx="2" fill="#9ca3af"/>
+            <rect x="158" y="110" width="390" height="20" rx="4" fill="#fff5f5" stroke="#fecaca" stroke-width="1"/>
+            <circle cx="168" cy="120" r="4" fill="#ef4444"/>
+            <rect x="178" y="117" width="120" height="5" rx="2" fill="#ef4444" opacity="0.7"/>
+            <rect x="158" y="138" width="250" height="18" rx="0" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+            <rect x="166" y="145" width="40" height="4" rx="2" fill="#9ca3af"/>
+            <rect x="220" y="145" width="50" height="4" rx="2" fill="#9ca3af"/>
+            <rect x="280" y="145" width="30" height="4" rx="2" fill="#9ca3af"/>
+            <rect x="158" y="156" width="250" height="18" rx="0" fill="white" stroke="#f3f4f6" stroke-width="1"/>
+            <rect x="166" y="162" width="30" height="4" rx="2" fill="#3b82f6" opacity="0.8"/>
+            <rect x="220" y="162" width="80" height="4" rx="2" fill="#374151"/>
+            <rect x="272" y="160" width="28" height="8" rx="4" fill="#fef3c7" stroke="#fde68a" stroke-width="0.5"/>
+            <rect x="158" y="174" width="250" height="18" rx="0" fill="#fafafa" stroke="#f3f4f6" stroke-width="1"/>
+            <rect x="166" y="180" width="30" height="4" rx="2" fill="#3b82f6" opacity="0.8"/>
+            <rect x="220" y="180" width="20" height="4" rx="2" fill="#374151"/>
+            <rect x="272" y="178" width="36" height="8" rx="4" fill="#dcfce7" stroke="#86efac" stroke-width="0.5"/>
+            <rect x="416" y="110" width="132" height="118" rx="6" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+            <rect x="424" y="120" width="70" height="6" rx="2" fill="#374151"/>
+            <text x="482" y="172" font-family="Inter,sans-serif" font-size="26" font-weight="800" fill="#ef4444" text-anchor="middle">0%</text>
+            <rect x="432" y="182" width="68" height="4" rx="2" fill="#9ca3af"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Legal Tech</span>
+            <span class="tag">ITSM</span>
+            <span class="tag-grey tag">Compliance</span>
+            <span class="tag-grey tag">Azure SLA</span>
+          </div>
+          <div class="project-title">Legal Service Desk</div>
+          <div class="project-desc">Full legal operations platform with service request management, SLA tracking, document drafting workflows, agreement lifecycle management, case tracking, compliance scoring, digital signatures, procurement &amp; ITT — built end-to-end for a legal firm.</div>
+          <div class="project-meta">
+            <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>Architect &amp; Builder</div>
+            <div class="project-meta-item"><span class="meta-label">Stack:&nbsp;</span>Node.js · Azure · SQL</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ICT Helpdesk -->
+      <div class="project-card">
+        <div class="project-mockup">
+          <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+            <rect width="140" height="240" fill="#1565c0"/>
+            <rect x="10" y="12" width="120" height="40" rx="6" fill="rgba(255,255,255,0.1)"/>
+            <circle cx="26" cy="32" r="12" fill="rgba(255,255,255,0.25)"/>
+            <rect x="44" y="24" width="62" height="7" rx="3" fill="rgba(255,255,255,0.85)"/>
+            <rect x="44" y="34" width="72" height="5" rx="2" fill="rgba(255,255,255,0.45)"/>
+            <rect x="0" y="62" width="140" height="26" fill="rgba(255,255,255,0.2)"/>
+            <rect x="10" y="69" width="16" height="11" rx="2" fill="rgba(255,255,255,0.7)"/>
+            <rect x="32" y="71" width="55" height="6" rx="2" fill="white"/>
+            <rect x="10" y="96" width="16" height="11" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="32" y="98" width="50" height="6" rx="2" fill="rgba(255,255,255,0.55)"/>
+            <rect x="10" y="114" width="16" height="11" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="32" y="116" width="55" height="6" rx="2" fill="rgba(255,255,255,0.55)"/>
+            <rect x="10" y="132" width="16" height="11" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="32" y="134" width="45" height="6" rx="2" fill="rgba(255,255,255,0.55)"/>
+            <rect x="10" y="150" width="16" height="11" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="32" y="152" width="30" height="6" rx="2" fill="rgba(255,255,255,0.55)"/>
+            <rect x="95" y="64" width="36" height="18" rx="9" fill="#ef4444"/>
+            <text x="113" y="76" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">8 new</text>
+            <rect x="140" width="420" height="240" fill="#f1f3f5"/>
+            <rect x="140" y="0" width="420" height="42" fill="white"/>
+            <rect x="152" y="13" width="90" height="11" rx="3" fill="#212529"/>
+            <rect x="140" y="41" width="420" height="1" fill="#dee2e6"/>
+            <rect x="150" y="50" width="72" height="52" rx="6" fill="white"/>
+            <text x="162" y="72" font-family="Inter,sans-serif" font-size="18" font-weight="800" fill="#1565c0">8</text>
+            <rect x="162" y="76" width="42" height="4" rx="2" fill="#adb5bd"/>
+            <rect x="150" y="48" width="72" height="3" rx="1" fill="#1565c0"/>
+            <rect x="230" y="50" width="72" height="52" rx="6" fill="white"/>
+            <text x="244" y="72" font-family="Inter,sans-serif" font-size="18" font-weight="800" fill="#fd7e14">6</text>
+            <rect x="244" y="76" width="30" height="4" rx="2" fill="#adb5bd"/>
+            <rect x="230" y="48" width="72" height="3" rx="1" fill="#fd7e14"/>
+            <rect x="310" y="50" width="72" height="52" rx="6" fill="white"/>
+            <text x="324" y="72" font-family="Inter,sans-serif" font-size="18" font-weight="800" fill="#e67e22">1</text>
+            <rect x="324" y="76" width="50" height="4" rx="2" fill="#adb5bd"/>
+            <rect x="310" y="48" width="72" height="3" rx="1" fill="#e67e22"/>
+            <rect x="390" y="50" width="72" height="52" rx="6" fill="white"/>
+            <text x="406" y="72" font-family="Inter,sans-serif" font-size="18" font-weight="800" fill="#2ecc71">0</text>
+            <rect x="406" y="76" width="48" height="4" rx="2" fill="#adb5bd"/>
+            <rect x="390" y="48" width="72" height="3" rx="1" fill="#2ecc71"/>
+            <rect x="150" y="112" width="200" height="18" rx="4" fill="white"/>
+            <rect x="154" y="116" width="55" height="10" rx="5" fill="#1565c0"/>
+            <text x="181" y="124" font-family="Inter,sans-serif" font-size="7" font-weight="700" fill="white" text-anchor="middle">OPEN: 6</text>
+            <rect x="214" y="116" width="50" height="10" rx="5" fill="#495057"/>
+            <text x="239" y="124" font-family="Inter,sans-serif" font-size="7" font-weight="700" fill="white" text-anchor="middle">CLOSED: 1</text>
+            <rect x="270" y="116" width="60" height="10" rx="5" fill="#fd7e14"/>
+            <text x="300" y="124" font-family="Inter,sans-serif" font-size="7" font-weight="700" fill="white" text-anchor="middle">IN PROG: 1</text>
+            <rect x="150" y="138" width="400" height="16" rx="0" fill="white" stroke="#dee2e6" stroke-width="0.5"/>
+            <rect x="158" y="144" width="35" height="4" rx="2" fill="#adb5bd"/>
+            <rect x="250" y="144" width="35" height="4" rx="2" fill="#adb5bd"/>
+            <rect x="360" y="144" width="30" height="4" rx="2" fill="#adb5bd"/>
+            <rect x="430" y="144" width="40" height="4" rx="2" fill="#adb5bd"/>
+            <rect x="150" y="154" width="400" height="15" fill="white" stroke="#f8f9fa" stroke-width="0.5"/>
+            <rect x="158" y="158" width="52" height="4" rx="2" fill="#1565c0" opacity="0.7"/>
+            <rect x="250" y="158" width="48" height="4" rx="2" fill="#495057"/>
+            <rect x="360" y="157" width="28" height="6" rx="3" fill="#1565c0"/>
+            <text x="374" y="162" font-family="Inter,sans-serif" font-size="5.5" fill="white" text-anchor="middle">OPEN</text>
+            <rect x="150" y="169" width="400" height="15" fill="#f8f9fa" stroke="#f1f3f5" stroke-width="0.5"/>
+            <rect x="158" y="173" width="52" height="4" rx="2" fill="#1565c0" opacity="0.7"/>
+            <rect x="250" y="173" width="56" height="4" rx="2" fill="#495057"/>
+            <rect x="360" y="172" width="42" height="6" rx="3" fill="#fd7e14"/>
+            <text x="381" y="177" font-family="Inter,sans-serif" font-size="5" fill="white" text-anchor="middle">IN PROGRESS</text>
+            <rect x="150" y="184" width="400" height="15" fill="white" stroke="#f1f3f5" stroke-width="0.5"/>
+            <rect x="158" y="188" width="52" height="4" rx="2" fill="#1565c0" opacity="0.7"/>
+            <rect x="250" y="188" width="60" height="4" rx="2" fill="#495057"/>
+            <rect x="360" y="187" width="28" height="6" rx="3" fill="#1565c0"/>
+            <text x="374" y="192" font-family="Inter,sans-serif" font-size="5.5" fill="white" text-anchor="middle">OPEN</text>
+            <rect x="150" y="199" width="400" height="15" fill="#f8f9fa" stroke="#f1f3f5" stroke-width="0.5"/>
+            <rect x="158" y="203" width="52" height="4" rx="2" fill="#1565c0" opacity="0.7"/>
+            <rect x="250" y="203" width="60" height="4" rx="2" fill="#495057"/>
+            <rect x="360" y="202" width="28" height="6" rx="3" fill="#1565c0"/>
+            <text x="374" y="207" font-family="Inter,sans-serif" font-size="5.5" fill="white" text-anchor="middle">OPEN</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">ITSM</span>
+            <span class="tag">Helpdesk</span>
+            <span class="tag-grey tag">Desicon Engineering</span>
+            <span class="tag-grey tag">Live Production</span>
+          </div>
+          <div class="project-title">ICT Helpdesk — Desicon Engineering</div>
+          <div class="project-desc">Enterprise IT helpdesk system for Desicon Engineering with real-time ticket tracking, priority management (Critical/High/Low), multi-engineer assignment, status workflows (Open/In Progress/Closed), SLA monitoring, admin controls, and live notifications — deployed in production.</div>
+          <div class="project-meta">
+            <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>Architect &amp; Builder</div>
+            <div class="project-meta-item"><span class="meta-label">Stack:&nbsp;</span>TypeScript · Node.js · PostgreSQL</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section services-section" id="services">
+    <div style="max-width:1100px;margin:0 auto;text-align:center;">
+      <div class="section-label" style="justify-content:center;">Services</div>
+      <h2 class="section-h2">What I build for companies</h2>
+      <p class="section-sub">From security hardening to full enterprise platforms — I help organisations secure, modernise, and scale their digital operations.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🛡️</div>
+        <div class="service-title">DevSecOps Implementation</div>
+        <div class="service-desc">Embed security into your entire CI/CD pipeline and engineering culture.</div>
+        <div class="service-items">
+          <div class="service-item">Pipeline security &amp; SAST/DAST</div>
+          <div class="service-item">Secrets management</div>
+          <div class="service-item">Container &amp; Kubernetes hardening</div>
+          <div class="service-item">Security gates &amp; policy-as-code</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <div class="service-title">Security Assessment</div>
+        <div class="service-desc">Identify vulnerabilities and harden your infrastructure before attackers do.</div>
+        <div class="service-items">
+          <div class="service-item">Cloud security posture review</div>
+          <div class="service-item">Penetration testing</div>
+          <div class="service-item">Zero Trust implementation</div>
+          <div class="service-item">ISO 27001 / NIST alignment</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <div class="service-title">Enterprise App Development</div>
+        <div class="service-desc">Custom internal tools and platforms built for your organisation's real workflows.</div>
+        <div class="service-items">
+          <div class="service-item">Service desk &amp; helpdesk systems</div>
+          <div class="service-item">Legal operations platforms</div>
+          <div class="service-item">Procurement &amp; ITT systems</div>
+          <div class="service-item">Compliance &amp; case management</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🟦</div>
+        <div class="service-title">Microsoft ERP &amp; M365 Solutions</div>
+        <div class="service-desc">Build and deploy Microsoft-powered ERP and business systems for companies.</div>
+        <div class="service-items">
+          <div class="service-item">Dynamics 365 ERP customisation</div>
+          <div class="service-item">Power Platform automation</div>
+          <div class="service-item">Azure-integrated workflows</div>
+          <div class="service-item">M365 governance &amp; compliance</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">☁️</div>
+        <div class="service-title">Cloud Infrastructure</div>
+        <div class="service-desc">Design and manage resilient, secure, and cost-optimised cloud environments.</div>
+        <div class="service-items">
+          <div class="service-item">Azure architecture design</div>
+          <div class="service-item">Infrastructure as Code (Terraform)</div>
+          <div class="service-item">Monitoring &amp; alerting (Sentinel)</div>
+          <div class="service-item">Disaster recovery planning</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <div class="service-title">Digital Transformation</div>
+        <div class="service-desc">Partner with your organisation to modernise operations end-to-end.</div>
+        <div class="service-items">
+          <div class="service-item">ITSM process design</div>
+          <div class="service-item">Legacy system migration</div>
+          <div class="service-item">Team training &amp; enablement</div>
+          <div class="service-item">Roadmap &amp; architecture consulting</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MICROSOFT STRIP -->
+  <div class="ms-strip">
+    <div class="ms-inner">
+      <div>
+        <div class="section-label">Microsoft Ecosystem</div>
+        <div class="ms-heading">Building enterprise solutions<br/>on the Microsoft stack</div>
+        <div class="ms-sub">
+          I work within the Microsoft ecosystem to build and deploy ERP systems,
+          Azure-integrated applications, and M365-powered workflows for companies
+          looking to modernise at scale. Open to Microsoft partnership collaborations.
+        </div>
+      </div>
+      <div class="ms-logos">
+        <div class="ms-logo-pill"><span class="dot dot-azure"></span>Azure</div>
+        <div class="ms-logo-pill"><span class="dot dot-m365"></span>M365</div>
+        <div class="ms-logo-pill"><span class="dot dot-sentinel"></span>Sentinel</div>
+        <div class="ms-logo-pill"><span class="dot dot-devops"></span>DevOps</div>
+        <div class="ms-logo-pill"><span class="dot dot-erp"></span>Dynamics 365</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="cta-section" id="contact">
+    <div class="cta-glow"></div>
+    <div class="cta-inner">
+      <div class="section-label" style="justify-content:center;margin-bottom:20px;">Contact</div>
+      <h2 class="cta-h2">Let's build something<br/>enterprise-grade together</h2>
+      <p class="cta-sub">Whether you need a DevSecOps engineer, a solutions architect, or a partner to build your next ERP or enterprise platform — I'm ready to collaborate.</p>
+      <a href="mailto:aihebest@gmail.com" class="cta-email">aihebest@gmail.com</a>
+      <div class="cta-links">
+        <a href="mailto:aihebest@gmail.com" class="btn btn-teal btn-lg">Send me a message →</a>
+        <a href="https://github.com/aihebest" target="_blank" class="btn btn-outline-teal btn-lg">GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      © 2026 <strong>Best S. E. Aihebholoria</strong> · DevSecOps Engineer &amp; Solutions Architect
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="mailto:aihebest@gmail.com">Email</a>
+      <a href="https://github.com/aihebest" target="_blank">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>

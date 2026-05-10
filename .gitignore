@@ -1,0 +1,5 @@
+.claude/
+temporary screenshots/
+screenshot-cjs.cjs
+screenshot-pw.mjs
+*.tmp
