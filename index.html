@@ -656,6 +656,121 @@
 
     <div class="projects-grid">
 
+      <!-- Serverless Security Platform -->
+      <div class="project-card">
+        <div class="project-mockup">
+          <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="azureGlow" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="rgba(0,120,212,0.18)"/>
+                <stop offset="100%" stop-color="rgba(11,25,41,0)"/>
+              </radialGradient>
+              <marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+                <path d="M0,0 L0,5 L7,2.5 z" fill="#00C9A7" opacity="0.6"/>
+              </marker>
+              <filter id="g3"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Background glow -->
+            <rect width="560" height="240" fill="#0a1828"/>
+            <ellipse cx="280" cy="120" rx="200" ry="100" fill="url(#azureGlow)"/>
+            <!-- Grid lines subtle -->
+            <line x1="0" y1="80" x2="560" y2="80" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="0" y1="160" x2="560" y2="160" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="140" y1="0" x2="140" y2="240" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="280" y1="0" x2="280" y2="240" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+            <line x1="420" y1="0" x2="420" y2="240" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+            <!-- TRIGGER layer -->
+            <rect x="16" y="30" width="90" height="34" rx="7" fill="#112237" stroke="rgba(0,120,212,0.4)" stroke-width="1"/>
+            <text x="61" y="44" font-family="Space Mono,monospace" font-size="7" fill="#60a5fa" text-anchor="middle" font-weight="700">HTTP Trigger</text>
+            <text x="61" y="56" font-family="Inter,sans-serif" font-size="6.5" fill="#7A8FA6" text-anchor="middle">API Gateway</text>
+
+            <rect x="16" y="100" width="90" height="34" rx="7" fill="#112237" stroke="rgba(0,120,212,0.4)" stroke-width="1"/>
+            <text x="61" y="114" font-family="Space Mono,monospace" font-size="7" fill="#60a5fa" text-anchor="middle" font-weight="700">Event Trigger</text>
+            <text x="61" y="126" font-family="Inter,sans-serif" font-size="6.5" fill="#7A8FA6" text-anchor="middle">Queue / Timer</text>
+
+            <rect x="16" y="170" width="90" height="34" rx="7" fill="#112237" stroke="rgba(0,120,212,0.4)" stroke-width="1"/>
+            <text x="61" y="184" font-family="Space Mono,monospace" font-size="7" fill="#60a5fa" text-anchor="middle" font-weight="700">Snyk Webhook</text>
+            <text x="61" y="196" font-family="Inter,sans-serif" font-size="6.5" fill="#7A8FA6" text-anchor="middle">Vuln Alert</text>
+
+            <!-- Arrows to Azure Functions -->
+            <line x1="106" y1="47" x2="148" y2="100" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arr2)" stroke-dasharray="3 2"/>
+            <line x1="106" y1="117" x2="148" y2="117" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arr2)" stroke-dasharray="3 2"/>
+            <line x1="106" y1="187" x2="148" y2="134" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arr2)" stroke-dasharray="3 2"/>
+
+            <!-- Azure Functions core (center) -->
+            <rect x="150" y="85" width="110" height="70" rx="10" fill="#172d48" stroke="#0078D4" stroke-width="1.8" filter="url(#g3)"/>
+            <text x="205" y="108" font-family="Space Mono,monospace" font-size="8" fill="#60a5fa" text-anchor="middle" font-weight="700">Azure</text>
+            <text x="205" y="120" font-family="Space Mono,monospace" font-size="8" fill="#60a5fa" text-anchor="middle" font-weight="700">Functions</text>
+            <text x="205" y="133" font-family="Inter,sans-serif" font-size="6.5" fill="#7A8FA6" text-anchor="middle">Python Runtime</text>
+            <text x="205" y="147" font-family="Inter,sans-serif" font-size="6" fill="#00C9A7" text-anchor="middle">⚡ Serverless</text>
+
+            <!-- Arrows to processing -->
+            <line x1="260" y1="100" x2="292" y2="68" stroke="#00C9A7" stroke-width="1.2" marker-end="url(#arr2)" opacity="0.7"/>
+            <line x1="260" y1="120" x2="292" y2="120" stroke="#00C9A7" stroke-width="1.2" marker-end="url(#arr2)" opacity="0.7"/>
+            <line x1="260" y1="140" x2="292" y2="172" stroke="#00C9A7" stroke-width="1.2" marker-end="url(#arr2)" opacity="0.7"/>
+
+            <!-- Processing boxes -->
+            <rect x="294" y="50" width="90" height="32" rx="7" fill="#112237" stroke="rgba(0,201,167,0.3)" stroke-width="1"/>
+            <text x="339" y="63" font-family="Space Mono,monospace" font-size="7" fill="#00C9A7" text-anchor="middle" font-weight="700">Threat Scan</text>
+            <text x="339" y="74" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">SAST + Snyk SCA</text>
+
+            <rect x="294" y="104" width="90" height="32" rx="7" fill="#112237" stroke="rgba(0,201,167,0.3)" stroke-width="1"/>
+            <text x="339" y="117" font-family="Space Mono,monospace" font-size="7" fill="#00C9A7" text-anchor="middle" font-weight="700">Dependency</text>
+            <text x="339" y="128" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">CVE Analysis</text>
+
+            <rect x="294" y="158" width="90" height="32" rx="7" fill="#112237" stroke="rgba(0,201,167,0.3)" stroke-width="1"/>
+            <text x="339" y="171" font-family="Space Mono,monospace" font-size="7" fill="#00C9A7" text-anchor="middle" font-weight="700">Auto Remediate</text>
+            <text x="339" y="182" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6" text-anchor="middle">PR + Fix Apply</text>
+
+            <!-- Arrows to output -->
+            <line x1="384" y1="66" x2="420" y2="90" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arr2)"/>
+            <line x1="384" y1="120" x2="420" y2="120" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arr2)"/>
+            <line x1="384" y1="174" x2="420" y2="150" stroke="rgba(0,201,167,0.4)" stroke-width="1" marker-end="url(#arr2)"/>
+
+            <!-- Output / Dashboard -->
+            <rect x="422" y="78" width="118" height="84" rx="10" fill="#172d48" stroke="rgba(0,201,167,0.5)" stroke-width="1.5"/>
+            <text x="481" y="97" font-family="Space Mono,monospace" font-size="7.5" fill="#00C9A7" text-anchor="middle" font-weight="700">Security Dashboard</text>
+            <!-- Mini dashboard lines -->
+            <rect x="434" y="106" width="94" height="5" rx="2" fill="rgba(0,201,167,0.2)"/>
+            <rect x="434" y="106" width="60" height="5" rx="2" fill="rgba(0,201,167,0.6)"/>
+            <text x="434" y="120" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6">Alerts</text>
+            <rect x="434" y="122" width="94" height="5" rx="2" fill="rgba(255,153,0,0.15)"/>
+            <rect x="434" y="122" width="30" height="5" rx="2" fill="rgba(255,153,0,0.7)"/>
+            <text x="434" y="136" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6">CVEs</text>
+            <rect x="434" y="138" width="94" height="5" rx="2" fill="rgba(239,68,68,0.1)"/>
+            <rect x="434" y="138" width="15" height="5" rx="2" fill="rgba(239,68,68,0.6)"/>
+            <text x="434" y="152" font-family="Inter,sans-serif" font-size="6" fill="#7A8FA6">Critical</text>
+
+            <!-- Tech badges bottom -->
+            <rect x="16" y="218" width="40" height="14" rx="4" fill="rgba(0,120,212,0.2)" stroke="rgba(0,120,212,0.4)" stroke-width="0.8"/>
+            <text x="36" y="228" font-family="Space Mono,monospace" font-size="6" fill="#60a5fa" text-anchor="middle" font-weight="700">Azure</text>
+            <rect x="62" y="218" width="40" height="14" rx="4" fill="rgba(255,212,59,0.15)" stroke="rgba(255,212,59,0.3)" stroke-width="0.8"/>
+            <text x="82" y="228" font-family="Space Mono,monospace" font-size="6" fill="#fbbf24" text-anchor="middle" font-weight="700">Python</text>
+            <rect x="108" y="218" width="36" height="14" rx="4" fill="rgba(90,45,130,0.2)" stroke="rgba(90,45,130,0.4)" stroke-width="0.8"/>
+            <text x="126" y="228" font-family="Space Mono,monospace" font-size="6" fill="#c084fc" text-anchor="middle" font-weight="700">Snyk</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Serverless</span>
+            <span class="tag">Azure</span>
+            <span class="tag-grey tag">Python</span>
+            <span class="tag-grey tag">Snyk</span>
+            <span class="tag-grey tag">SCA</span>
+          </div>
+          <div class="project-title">Serverless Security Platform</div>
+          <div class="project-desc">
+            A cloud-native security platform built on Azure Functions (Python) that automates vulnerability detection across the SDLC. Integrates Snyk for continuous Software Composition Analysis, automated CVE triage, and dependency auto-remediation via PR generation — all triggered serverlessly through HTTP, queue, and webhook events.
+          </div>
+          <div class="project-meta">
+            <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>Architect &amp; Developer</div>
+            <div class="project-meta-item"><span class="meta-label">Stack:&nbsp;</span>Azure Functions · Python · Snyk · SCA</div>
+          </div>
+          <a href="https://github.com/aihebest/serverless-security-platform" target="_blank" class="btn btn-outline-teal" style="font-size:13px;margin-top:16px;">View on GitHub →</a>
+        </div>
+      </div>
+
       <!-- Legal Service Desk -->
       <div class="project-card">
         <div class="project-mockup">
