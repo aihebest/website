@@ -833,6 +833,10 @@
           <div class="project-desc">
             A cloud-native security platform built on Azure Functions (Python) that automates vulnerability detection across the SDLC. Integrates Snyk for continuous Software Composition Analysis, automated CVE triage, and dependency auto-remediation via PR generation — all triggered serverlessly through HTTP, queue, and webhook events.
           </div>
+          <div class="devsecops-callout">
+            <div class="dso-label">⚙ DevSecOps</div>
+            <div class="dso-text">This platform <em>is</em> the DevSecOps pipeline. <strong>Snyk SCA</strong> runs continuously on every dependency — CVEs are triaged automatically and auto-remediation PRs are raised without human intervention. <strong>Azure Functions</strong> enforce least-privilege serverless execution with zero persistent compute surface. Secrets managed via <strong>Azure Key Vault</strong> — never hardcoded. Webhook signatures validated on ingress to prevent supply-chain injection attacks.</div>
+          </div>
           <div class="project-meta">
             <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>Architect &amp; Developer</div>
             <div class="project-meta-item"><span class="meta-label">Stack:&nbsp;</span>Azure Functions · Python · Snyk · SCA</div>
@@ -955,6 +959,10 @@
           <div class="project-desc">
             Led an AI Threat Modelling Workshop for Desicon Engineering (oil servicing), targeting their AWS-hosted Oracle EBS and AI prediction systems. Ran all scenarios against the cyber attack kill chain using <strong style="color:var(--slate-light)">STRIDE, MITRE ATT&amp;CK, and DREAD</strong> for control gap assessment. Identified <strong style="color:#f87171">4 high risks and 3 medium risks</strong> — including data poisoning, model extraction, adversarial attacks, and insider threats.
           </div>
+          <div class="devsecops-callout">
+            <div class="dso-label">⚙ DevSecOps</div>
+            <div class="dso-text">Pure threat-intelligence engagement. Applied <strong>STRIDE</strong> to enumerate spoofing, tampering, and repudiation vectors across the Oracle EBS API layer. Mapped every finding to <strong>MITRE ATT&CK</strong> TTPs and scored residual risk with <strong>DREAD</strong>. Modelled the full <strong>Cyber Kill Chain</strong> — from initial AI data-poisoning reconnaissance through insider-threat lateral movement to impact. Output: a prioritised, sprint-ready remediation backlog Desicon's engineering team could act on immediately.</div>
+          </div>
           <div class="project-meta">
             <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>Lead DevSecOps Architect</div>
             <div class="project-meta-item"><span class="meta-label">Client:&nbsp;</span>Desicon Engineering Ltd</div>
@@ -1038,6 +1046,10 @@
           </div>
           <div class="project-title">Legal Service Desk</div>
           <div class="project-desc">Full legal operations platform with service request management, SLA tracking, document drafting workflows, agreement lifecycle management, case tracking, compliance scoring, digital signatures, procurement &amp; ITT — built end-to-end for a legal firm.</div>
+          <div class="devsecops-callout">
+            <div class="dso-label">⚙ DevSecOps</div>
+            <div class="dso-text"><strong>RBAC</strong> enforced at every route — solicitors, paralegals, and admins each have scoped data access with no privilege-escalation paths. <strong>Document lifecycle security</strong>: drafts, signed agreements, and ITT submissions are version-locked and audit-logged against every actor. The <strong>SLA engine</strong> doubles as a compliance guardrail — deadline breaches are flagged before they become regulatory exposure. Azure-hosted with TLS in transit and encryption at rest across all legal data.</div>
+          </div>
           <div class="project-meta">
             <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>Architect &amp; Builder</div>
             <div class="project-meta-item"><span class="meta-label">Stack:&nbsp;</span>Node.js · Azure · SQL</div>
@@ -1130,6 +1142,10 @@
           </div>
           <div class="project-title">ICT Helpdesk — Desicon Engineering</div>
           <div class="project-desc">Enterprise IT helpdesk system for Desicon Engineering with real-time ticket tracking, priority management (Critical/High/Low), multi-engineer assignment, status workflows (Open/In Progress/Closed), SLA monitoring, admin controls, and live notifications — deployed in production.</div>
+          <div class="devsecops-callout">
+            <div class="dso-label">⚙ DevSecOps</div>
+            <div class="dso-text">Every ticket mutation is <strong>audit-logged</strong> with timestamp and actor — creating a tamper-evident trail suitable for ISO 27001 evidence gathering. <strong>Priority triage</strong> (Critical → High → Low) mirrors security incident-response playbook SLAs. <strong>RBAC</strong> separates admin controls from engineer views; PostgreSQL row-level security prevents cross-engineer data leakage. Live notifications run over secure WebSocket channels with session-bound authentication tokens.</div>
+          </div>
           <div class="project-meta">
             <div class="project-meta-item"><span class="meta-label">Role:&nbsp;</span>Architect &amp; Builder</div>
             <div class="project-meta-item"><span class="meta-label">Stack:&nbsp;</span>TypeScript · Node.js · PostgreSQL</div>
@@ -1405,6 +1421,10 @@
           </div>
           <div class="project-title">FlyNow Business Management System</div>
           <div class="project-desc">Bespoke digital operations platform built for <strong>Now Travel &amp; Tours</strong> (IATA &amp; NANTA certified, Port Harcourt). Replaces spreadsheets &amp; WhatsApp threads with a unified system: Customer CRM, Bookings, Visa Application Pipeline, Invoices &amp; Paystack payments, SharePoint Document Vault, and Staff RBAC — giving the MD real-time visibility from any device. Deployed on Microsoft Azure Static Apps.</div>
+          <div class="devsecops-callout">
+            <div class="dso-label">⚙ DevSecOps</div>
+            <div class="dso-text"><strong>Microsoft 365 SSO</strong> — staff authenticate with existing corporate credentials; no separate passwords; MFA enforced at tenant level. <strong>SharePoint Document Vault</strong> stores passports and visa scans with Azure AD-gated access and encryption at rest — sensitive customer identity data never sits in a local database. <strong>RBAC</strong> scopes junior staff to their assigned work only; financial data is MD-restricted. <strong>Paystack</strong> webhooks are HMAC signature-validated on every callback — no card data ever touches the application server. All booking and payment mutations carry a full audit trail.</div>
+          </div>
           <div class="project-meta">
             <div class="project-meta-item"><span class="meta-label">Client:&nbsp;</span>Now Travel &amp; Tours Ltd</div>
             <div class="project-meta-item"><span class="meta-label">Stack:&nbsp;</span>React · Azure · SharePoint · M365 · Paystack</div>
